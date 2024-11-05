@@ -5,8 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 import time
-
-url = "http://localhost:5173/"
+from conftest import url
 
 def test_get_by_endpoint():
     response = requests.get(url)
@@ -18,12 +17,12 @@ def test_get_by_selector():
     assert url == "http://localhost:5173/", "URLs do not match"
 
 
-@pytest.fixture
-def setup():
-    browser = webdriver.Chrome()
-    browser.get(url)
-    yield browser
-    browser.quit()
+# @pytest.fixture
+# def setup():
+#     browser = webdriver.Chrome()
+#     browser.get(url)
+#     yield browser
+#     browser.quit()
 
 def test_add_test_case(setup):
     driver = setup
